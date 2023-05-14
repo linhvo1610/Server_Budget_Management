@@ -1,0 +1,134 @@
+<%- include('../inc/top') %>
+
+    <div class="container">
+        <div class="row justify-content-center" style="margin-top: 10px;">
+            <div class="col-md-6 text-center mb-5">
+                <h2 class="heading-section"><b>Quản Lý Sản Phẩm</b></h2>
+            </div>
+        </div>
+
+
+
+       
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="d-flex flex-row-reverse" style="margin-bottom: 5px;"><button type="button"
+                            class="btn btn-success "
+                            onclick="location.href='http://192.168.102.16:8000/product/add'">Add Product</button></div>
+                    <div class="d-flex flex-row-reverse " style="margin-bottom: 5px;">
+                        <select class="browser-default custom-select" style="width:150px"
+                            onchange="document.location.href=this.value">
+                            <option selected>Lọc</option>
+                            <option value="http://192.168.102.16:8000/product/">Reset</option>
+                            <% list_cat.forEach(data=>{%>
+                                <option value="http://192.168.102.16:8000/product/?id_cat=<%= data._id%>">
+                                    <%= data.name%>
+                                </option>
+                                <%} ) %>
+
+                        </select>
+                    </div>
+                    <div class="card shadow-sm p-3 mb-5 bg-white rounded" style="padding: 30px;">
+                    <div class="table-wrap">
+                        <table id="myTable" class="table table-responsive-xl">
+                            <thead class="thead-dark">
+                                <tr>
+
+                                    <th>ID</th>
+                                    <th>Image</th>
+                                    <th onclick="openPageName()">Name</th>
+                                    <th>Category</th>
+                                    <th>Description</th>
+                                    <th onclick="openPagePrice()">Price</th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% list.forEach(data=>{%>
+                                    <tr class="alert" role="alert">
+                                        <th>
+                                            
+                                                <%=data.id %>
+                                          
+                                        </th>
+                                        <td><img style="width: 50px; height: 50px;" src="<%= data.image %>"></td>
+                                        <td class="d-flex">
+
+
+
+
+                                            <span>
+                                                <a href="/product/details/<%=data._id%>">
+                                                    <%=data.name %>
+                                                </a>
+                                            </span>
+
+                                        </td>
+
+                                        <td>
+                                            <%=data.id_cat.name %>
+                                        </td>
+
+                                        <td class="status"><span class="active">
+                                                <%=data.description %>
+                                            </span></td>
+
+                                        <td>
+                                            <%=data.price %>
+                                        </td>
+                                        <td>
+                                            <button type="submit">
+                                                <span><a href="/product/delete/<%=data._id%>"
+                                                        onclick="return confirm_alert(this);"><i class="fa fa-trash" style="font-size: 20px; color: rgb(245, 65, 65);"></i></a></span>
+                                            </button>
+                                            <button type="submit">
+                                                <span><a href="/product/update/<%=data._id%>">
+                                                        <i class="fa fa-pencil-square-o" style="font-size: 20px; color: rgb(65, 245, 92); margin-left: 10px;"></i>
+                                                    </a>
+                                                </span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <%} ) %>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            function confirm_alert(node) {
+                return confirm("Bấm OK để xóa sản phẩm");
+            }
+        </script>
+         <script>
+            function openPageName() {
+              const currentUrl = window.location.href;
+              const targetUrl = 'http://192.168.102.16:8000/product';
+              const newUrl = 'http://192.168.102.16:8000/product/sortproductname';
+          
+              if (currentUrl === targetUrl) {
+                window.location.href = newUrl;
+              } else if (currentUrl === newUrl) {
+                window.history.back();
+              }
+            }
+          </script>
+          <script>
+            function openPagePrice() {
+              const currentUrl = window.location.href;
+              const targetUrl = 'http://192.168.102.16:8000/product';
+              const newUrl = 'http://192.168.102.16:8000/product/sortproductprice';
+          
+              if (currentUrl === targetUrl) {
+                window.location.href = newUrl;
+              } else if (currentUrl === newUrl) {
+                window.history.back();
+              }
+            }
+          </script>
+
+        <%- include('../inc/bottom') %>

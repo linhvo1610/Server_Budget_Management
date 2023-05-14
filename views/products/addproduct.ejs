@@ -1,0 +1,84 @@
+<%- include('../inc/top') %>
+<div class="container">
+    <div class="page-wrapper p-t-45 p-b-50">
+        <div class="wrapper wrapper--w790">
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">THÊM SẢN PHẨM </h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        
+                        <div class="form-row">
+                            <div class="name">Tên</div>
+                            <div class="value">
+                                <div class="row row-refine">
+                                <div class="input-group col-7">
+                                    <input class="input--style-5" style="background-color: rgb(238, 243, 243);" type="text" name="name" required>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row m-b-55">
+                            <div class="name">Hình ảnh</div>
+                            <div class="value">
+                                <div class="row row-refine">
+                                <div class="input-group">
+                                    <input class=""  style="margin-left: 20px;" type="file" name="image">
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="form-row m-b-55">
+                            <div class="name">Loại</div>
+                            <select class="browser-default custom-select" style="width:200px;background-color: rgb(246, 248, 248);" name="category">
+                                <option selected>Open this select menu</option>
+                                
+                                
+                                <% list_cat.forEach(function(tl) { %>
+                                    <option value="<%= tl._id%>"><%= tl.name %></option>
+                                    
+                                  <% }); %>
+                    
+                              </select>
+                        </div>
+                        <div class="form-row m-b-55">
+                            <div class="name">Mô tả</div>
+                            <div class="value">
+                                <div class="row row-refine">
+                                    <div class="col-7">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" style="background-color: rgb(238, 243, 243);" type="text" name="description">
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row m-b-55">
+                            <div class="name">Giá</div>
+                            <div class="value">
+                                <div class="row row-refine">
+                                    <div class="col-7">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" style="background-color: rgb(238, 243, 243);" type="number" name="price" required>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        
+                       
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn--radius-2 btn--red " type="submit">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../inc/bottom') %>
