@@ -7,8 +7,8 @@ var session = require('express-session')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
-var productRouter =require('./routes/products')
 var APIRouter = require('./routes/api');
+var categoryRouter = require('./routes/category')
 
 var app = express();
 
@@ -29,8 +29,8 @@ app.use(session({
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/',loginRouter);
-app.use('/product',productRouter);
 app.use('/api',APIRouter);
+app.use('/category',categoryRouter);
 
 
 // catch 404 and forward to error handler

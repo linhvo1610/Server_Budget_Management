@@ -1,0 +1,55 @@
+<%- include('../inc/top') %>
+    <div class="container" style="min-height: 575px;">
+        <div class="row justify-content-center" style="margin-top: 10px;">
+            <div class="col-md-6 text-center mb-5">
+                <h2 class="heading-section"><b>Quản Lý Loại Sản Phẩm</b></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex flex-row-reverse" style="margin-bottom: 5px;"><button type="button" class="btn btn-success " onclick="location.href='http://192.168.102.12:8000/category/addexpensecat'">Add Category</button></div>
+                <div class="table-wrap">
+                    <table class="table table-responsive-xl">
+                        <thead class="thead-dark">
+                            <tr>
+
+                                <th>ID</th>
+                                <th><a class="text-light" href="http://192.168.102.12:8000/expensecat/sortexpensecatname">Name</a></th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% list.forEach(data=>{%>
+                                <tr class="alert" role="alert">
+                                    <th>
+                                       <a href="/product/expensecat/update/<%=data._id%>"> <%=data.id %> </a>
+                                    </th>
+
+                                    <td>
+                                        <%=data.name %>
+                                    </td>
+
+                                   
+                                    <td>
+                                        <button type="submit" >
+                                        <span><a href="/category/expensecat/delete/<%=data._id%>" onclick="return confirm_alert(this);">Delete</a></span>
+                                    </button>
+                                    </td>
+                                </tr>
+                                
+                                <%} ) %>
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function confirm_alert(node) {
+            return confirm("Please click on OK to continue.");
+        }
+        </script>
+
+    <%- include('../inc/bottom') %>

@@ -7,14 +7,14 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="d-flex flex-row-reverse" style="margin-bottom: 5px;"><button type="button" class="btn btn-success " onclick="location.href='http://localhost:3000/product/addcat'">Add Category</button></div>
+                <div class="d-flex flex-row-reverse" style="margin-bottom: 5px;"><button type="button" class="btn btn-success " onclick="location.href='http://192.168.102.12:8000/category/addreceivecat'">Add Category</button></div>
                 <div class="table-wrap">
                     <table class="table table-responsive-xl">
                         <thead class="thead-dark">
                             <tr>
 
                                 <th>ID</th>
-                                <th><a class="text-light" href="http://localhost:3000/product/category/sortcatname">Name</a></th>
+                                <th><a class="text-light" href="http://192.168.102.12:8000/category/receivecat/sortreceivecatname">Name</a></th>
                                 <th>&nbsp;</th>
                             </tr>
                         </thead>
@@ -22,7 +22,7 @@
                             <% list.forEach(data=>{%>
                                 <tr class="alert" role="alert">
                                     <th>
-                                       <a href="/product/category/update/<%=data._id%>"> <%=data.id %> </a>
+                                       <a href="/category/receivecat/update/<%=data._id%>"> <%=data.id %> </a>
                                     </th>
 
                                     <td>
@@ -32,7 +32,7 @@
                                    
                                     <td>
                                         <button type="submit" >
-                                        <span><a href="/product/category/delete/<%=data._id%>" onclick="return confirm_alert(this);">Delete</a></span>
+                                        <span><a href="/category/receivecat/delete/<%=data._id%>" onclick="return confirm_alert(this);">Delete</a></span>
                                     </button>
                                     </td>
                                 </tr>
