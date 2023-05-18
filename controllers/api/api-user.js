@@ -6,12 +6,12 @@ exports.listUsers = async (req, res, next) => {
         msg: "ok"
     }
 
+    let dieu_kien =null;
     if(typeof(req.query.username)!='undefined'){
         let username =req.query.username;
         dieu_kien={username:username};
-
+        console.log(dieu_kien);
     }
-
     //code xử lý lấy danh sách
     let list = []
     try {

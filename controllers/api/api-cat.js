@@ -1,6 +1,6 @@
-const MyModel = require('../../models/product.model')
+const MyModel = require('../../models/category.model')
 
-exports.listProducts = async (req, res, next) => {
+exports.listcatexpense = async (req, res, next) => {
     let dataR = {
         status: 1,
         msg: "ok"
@@ -11,7 +11,7 @@ exports.listProducts = async (req, res, next) => {
     //code xử lý lấy danh sách
     let list = []
     try {
-        list = await MyModel.categoryModel.find();
+        list = await MyModel.expenseModel.find();
         dataR.data = list;
     }
     catch (err) {
@@ -21,3 +21,25 @@ exports.listProducts = async (req, res, next) => {
     //trả về client
     res.json(dataR)
 }
+exports.listcatreceive = async (req, res, next) => {
+    let dataR = {
+        status: 1,
+        msg: "ok"
+    }
+
+
+
+    //code xử lý lấy danh sách
+    let list = []
+    try {
+        list = await MyModel.receiveModel.find();
+        dataR.data = list;
+    }
+    catch (err) {
+        dataR.msg = err.message;
+    }
+
+    //trả về client
+    res.json(dataR)
+}
+
