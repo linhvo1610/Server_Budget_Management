@@ -23,7 +23,8 @@ exports.listUsers = async (req, res, next) => {
     }
 
     //trả về client
-    res.json(dataR)
+    res.json(dataR);
+    console.log(dataR);
 }
 
 
