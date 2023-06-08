@@ -1,4 +1,4 @@
-const MyModel = require('../../models/category.model')
+const MyModel = require('../../models/model')
 
 exports.listcatexpense = async (req, res, next) => {
     let dataR = {
