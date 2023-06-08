@@ -1,4 +1,4 @@
-const MyModel = require('../../models/users.model')
+const MyModel = require('../../models/model')
 
 exports.listUsers = async (req, res, next) => {
     let dataR = {
@@ -23,7 +23,8 @@ exports.listUsers = async (req, res, next) => {
     }
 
     //trả về client
-    res.json(dataR)
+    res.json(dataR);
+    console.log(dataR);
 }
 
 

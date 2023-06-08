@@ -1,5 +1,5 @@
 
-const myModel=require('../models/users.model')
+const myModel=require('../models/model')
 
 exports.userLogin = async(req,res,next)=>{
     let msg='';
