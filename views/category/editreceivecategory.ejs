@@ -7,18 +7,30 @@
                     <h2 class="title">SỬA LOẠI THU</h2>
                 </div>
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         
                         <div class="form-row">
                             <div class="name">Name</div>
                             <div class="value">
                                 <div class="row row-refine">
                                 <div class="input-group col-7">
-                                    <input class="input--style-5" type="text" name="name" placeholder="<%= objCat.name %>">
+                                    <input class="input--style-5" type="text" name="name" value="<%= objCat.name %>">
                                 </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="form-row m-b-55">
+                            <div class="name">Image</div>
+                            <div class="value">
+                                <div class="row row-refine">
+                                    <div class="input-group">
+                                        <input class="input--style-5"  type="file" name="image" value="<%= objCat.image %>" >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
 
                         
                        

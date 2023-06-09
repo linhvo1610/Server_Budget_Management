@@ -2,7 +2,7 @@ const myModel = require('../models/model');
 const fs = require('fs');
 exports.addexpenseCat = async (req, res, next) => {
     let msg = ''; // ghi câu thông báo
-    var url_img='';
+   
 
     if (req.method == 'POST') {
         // xử lý ghi CSDL ở đây
@@ -10,13 +10,11 @@ exports.addexpenseCat = async (req, res, next) => {
 
 
         // tạo đối tượng model 
-        await fs.promises.rename(req.file.path, './public/uploads/' + req.file.originalname)
-        url_img = '/uploads/' + req.file.originalname;
-        console.log("upload thành công" + url_img);
+       
         let objCat = new myModel.expenseModel();
         objCat.name = req.body.name;
-        objCat.image=url_img;
-
+        objCat.image = req.file.filename;
+    
         try {
             let new_cat = await objCat.save();
 
@@ -82,6 +80,7 @@ exports.editexpenseCat = async (req, res, next) => {
 
         let objCat = new myModel.expenseModel();
         objCat.name = req.body.name;
+        objCat.image = req.file.filename;
         objCat._id = req.params.idcat;
         try {
 
@@ -133,6 +132,7 @@ exports.addreceiveCat = async (req, res, next) => {
         // tạo đối tượng model 
         let objCat = new myModel.receiveModel();
         objCat.name = req.body.name;
+        objCat.image = req.file.filename;
 
         try {
             let new_cat = await objCat.save();
@@ -193,6 +193,7 @@ exports.editreceiveCat = async (req, res, next) => {
 
         let objCat = new myModel.receiveModel();
         objCat.name = req.body.name;
+        objCat.image = req.file.filename;
         objCat._id = req.params.idcat;
         try {
 
@@ -211,7 +212,7 @@ exports.editreceiveCat = async (req, res, next) => {
 
     }
 
-    res.render('products/editreceivecategory',
+    res.render('category/editreceivecategory',
         { msg: msg, objCat: objCat })
 
 }

@@ -14,7 +14,7 @@ const userSchema = new db.mongoose.Schema(
 
 const expenseSchema = new db.mongoose.Schema(
     {
-        image:{type: String,require:true},
+        image: {type: String,require:true},
         name: { type: String, required: true },
         
     },
@@ -22,7 +22,7 @@ const expenseSchema = new db.mongoose.Schema(
 );
 const receiveSchema = new db.mongoose.Schema(
     {
-        image:{type: String,require:true},
+        image: {type: String,require:true},
         name: { type: String, required: true },
         
     },
