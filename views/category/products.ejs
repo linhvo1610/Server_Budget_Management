@@ -14,14 +14,14 @@
                 <div class="col-md-12">
                     <div class="d-flex flex-row-reverse" style="margin-bottom: 5px;"><button type="button"
                             class="btn btn-success "
-                            onclick="location.href='http://192.168.102.16:8000/product/add'">Add Product</button></div>
+                            onclick="location.href='http://192.168.1.6:8000/product/add'">Add Product</button></div>
                     <div class="d-flex flex-row-reverse " style="margin-bottom: 5px;">
                         <select class="browser-default custom-select" style="width:150px"
                             onchange="document.location.href=this.value">
                             <option selected>Lọc</option>
-                            <option value="http://192.168.102.16:8000/product/">Reset</option>
+                            <option value="http://192.168.1.6:8000/product/">Reset</option>
                             <% list_cat.forEach(data=>{%>
-                                <option value="http://192.168.102.16:8000/product/?id_cat=<%= data._id%>">
+                                <option value="http://192.168.1.6:8000/product/?id_cat=<%= data._id%>">
                                     <%= data.name%>
                                 </option>
                                 <%} ) %>
@@ -107,8 +107,8 @@
          <script>
             function openPageName() {
               const currentUrl = window.location.href;
-              const targetUrl = 'http://192.168.102.16:8000/product';
-              const newUrl = 'http://192.168.102.16:8000/product/sortproductname';
+              const targetUrl = 'http://192.168.1.6:8000/product';
+              const newUrl = 'http://192.168.1.6:8000/product/sortproductname';
           
               if (currentUrl === targetUrl) {
                 window.location.href = newUrl;
@@ -120,8 +120,8 @@
           <script>
             function openPagePrice() {
               const currentUrl = window.location.href;
-              const targetUrl = 'http://192.168.102.16:8000/product';
-              const newUrl = 'http://192.168.102.16:8000/product/sortproductprice';
+              const targetUrl = 'http://192.168.1.6:8000/product';
+              const newUrl = 'http://192.168.1.6:8000/product/sortproductprice';
           
               if (currentUrl === targetUrl) {
                 window.location.href = newUrl;
