@@ -1,0 +1,10 @@
+var express = require('express');
+var router = express.Router();
+var catcontroller =require('../controllers/category.controller');
+var check_login = require('../middleware/check_login');
+var balancectr = require('../controllers/balance.controller');
+var multer=require('multer');
+var uploader=multer({dest:'./tmp'});
+router.get('/add',check_login.request_login,balancectr.addbalance);
+router.post('/add',check_login.request_login,balancectr.addbalance);
+module.exports = router;

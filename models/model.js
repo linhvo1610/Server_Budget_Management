@@ -11,50 +11,36 @@ const userSchema = new db.mongoose.Schema(
 );
 
 
-
-const expenseSchema = new db.mongoose.Schema(
-    {
-        image: {type: String,require:true},
-        name: { type: String, required: true },
-        
+const categorySchema = new db.mongoose.Schema(
+    {   name: { type: String, required: true },
+        id_user:{type: db.mongoose.Schema.Types.ObjectId,ref:'usersModel'},      
     },
-    {collection:'expense_cat'}
-);
-const receiveSchema = new db.mongoose.Schema(
-    {
-        image: {type: String,require:true},
-        name: { type: String, required: true },
-        
-    },
-    {collection:'receive_cat'}
+    {collection:'category'}
 );
 
-const budgetexpenseSchema = new db.mongoose.Schema({
-    title:{type: String,required:true},
-    price:{type: Number,required:true},
-    note:{type: String,required:true},
-    filter:{type:Number,required:true},
-    id_expense:{type: db.mongoose.Schema.Types.ObjectId,required:false,ref:'expenseModel'},
+const balanceSchema = new db.mongoose.Schema({
     id_user:{type: db.mongoose.Schema.Types.ObjectId,ref:'usersModel'},
-    date:{type:Date,required:true}
-},{collection:'budgetexpense'});
-const budgetreceiveSchema = new db.mongoose.Schema({
-    title:{type: String,required:true},
-    price:{type: Number,required:true},
-    note:{type: String,required:true},
-    filter:{type:Number,required:true},
-    id_receive:{type: db.mongoose.Schema.Types.ObjectId,required:false,ref:'receiveModel'},
+    balance:{type:Number,required:true}
+},{collection:'balance'});
+
+const recordSchema = new db.mongoose.Schema({
+    id_balance:{type: db.mongoose.Schema.Types.ObjectId,ref:'balanceModel'},
     id_user:{type: db.mongoose.Schema.Types.ObjectId,ref:'usersModel'},
+    id_cat:{type: db.mongoose.Schema.Types.ObjectId,ref:'categoryModel'},
+    title:{type:String,required:true},
+    price:{type:Number,required:true},
+    description:{type: String},
+    is_expense: { type: Boolean, default: true },
     date:{type:Date,required:true}
-},{collection:'budgetreceive'});
+},{collection:'record'});
 
 
-let expenseModel = db.mongoose.model('expenseModel',expenseSchema);
-let receiveModel = db.mongoose.model('receiveModel',receiveSchema);
+
+let categoryModel = db.mongoose.model('categoryModel',categorySchema);
+let balanceModel = db.mongoose.model('balanceModel',balanceSchema);
 let usersModel = db.mongoose.model('usersModel',userSchema);
-let budgetexpenseModel= db.mongoose.model('budgetexpenseModel',budgetexpenseSchema);
-let budgetreceiveModel= db.mongoose.model('budgetreceiveModel',budgetreceiveSchema);
+let recordModel = db.mongoose.model('recordModel',recordSchema);
 
 module.exports={
-    expenseModel,receiveModel,usersModel,budgetexpenseModel,budgetreceiveModel
+    categoryModel,balanceModel,usersModel,recordModel
 }

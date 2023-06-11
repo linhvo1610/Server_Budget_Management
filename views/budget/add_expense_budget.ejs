@@ -34,7 +34,7 @@
                                 <div class="value">
                                     <div class="row row-refine">
                                         <div class="input-group col-7">
-                                            <input class="input--style-5" type="text" name="note">
+                                            <input class="input--style-5" type="text" name="description">
                                         </div>
                                     </div>
                                 </div>
@@ -64,6 +64,25 @@
                                       <% }); %>
                         
                                   </select>
+                            </div>
+                            <div class="form-row m-b-55">
+                                <div class="name">Số Dư</div>
+                                <select class="browser-default custom-select" style="width:200px;background-color: rgb(246, 248, 248);" name="balance">
+                                    <option selected>Open this select menu</option>
+                                    
+                                    
+                                    <% list_balance.forEach(function(bl) { %>
+                                        <option value="<%= bl._id%>"><%= bl.balance %></option>
+                                        
+                                      <% }); %>
+                        
+                                  </select>
+                            </div>
+                            <div class="form-row m-b-55">
+                                <div class="name">Khoản Chi?</div>
+                                <div class="checkbox">
+                                    <label><input name="check" type="checkbox" value="true"></label>
+                                </div>
                             </div>
 
 
