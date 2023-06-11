@@ -27,7 +27,8 @@ exports.addcategory = async (req, res, next) => {
 }
 exports.listcategory = async (req, res, next) => {
 
-    var list = await myModel.categoryModel.find();
+    var list = await myModel.categoryModel.find().populate("id_user");
+    
     console.log(list);
 
     res.render('category/expense_category', { list: list })

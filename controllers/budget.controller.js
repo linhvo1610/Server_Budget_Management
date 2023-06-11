@@ -15,8 +15,25 @@ exports.getrecord = async (req, res, next) => {
 
     var list = await myModel.recordModel.find(dieu_kien).populate('id_cat');
     console.log(list);
-    res.render('products/products', { list: list, list_cat: list_cat },)
+    res.render('budget/expense', { list: list, list_cat: list_cat },)
 
+}
+exports.detail = async(req,res,next) =>{
+    let dieu_kien = null;
+    let list_cat = await myModel.categoryModel.find();
+    let objCat = await myModel.categoryModel.findById(req.params.idcat);
+    let objuser = await myModel.usersModel.findOne({username:list.id_user})
+    console.log(objCat);
+    if (typeof (req.query.id_cat) != 'undefined') {
+        let id_cat = req.query.id_cat;
+        dieu_kien = { id_cat: id_cat };
+
+    }
+
+
+    var list = await myModel.recordModel.find(dieu_kien).populate('id_cat');
+    console.log(list);
+    res.render('budget/detail', { list: list, list_cat: list_cat,objuser: objuser },)
 }
 exports.addrecord = async (req, res, next) => {
     var url_img = '';

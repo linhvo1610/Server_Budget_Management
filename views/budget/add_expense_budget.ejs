@@ -4,7 +4,7 @@
             <div class="wrapper wrapper--w790">
                 <div class="card card-5">
                     <div class="card-heading">
-                        <h2 class="title">THÊM KHOẢN CHI</h2>
+                        <h2 class="title">ADD BUDGET</h2>
                     </div>
                     <div class="card-body">
                         <form action="" method="POST">
@@ -40,9 +40,9 @@
                                 </div>
                             </div>
                             <div class="form-row m-b-55">
-                                <div class="name">Loại</div>
+                                <div class="name">Cattegory</div>
                                 <select class="browser-default custom-select" style="width:200px;background-color: rgb(246, 248, 248);" name="category">
-                                    <option selected>Open this select menu</option>
+                                    <option selected> Select Category</option>
                                     
                                     
                                     <% list_cat.forEach(function(tl) { %>
@@ -53,9 +53,9 @@
                                   </select>
                             </div>
                             <div class="form-row m-b-55">
-                                <div class="name">Loại</div>
+                                <div class="name">User</div>
                                 <select class="browser-default custom-select" style="width:200px;background-color: rgb(246, 248, 248);" name="user">
-                                    <option selected>Open this select menu</option>
+                                    <option selected>Select Users</option>
                                     
                                     
                                     <% list_user.forEach(function(user) { %>
@@ -66,9 +66,9 @@
                                   </select>
                             </div>
                             <div class="form-row m-b-55">
-                                <div class="name">Số Dư</div>
+                                <div class="name">Surplus</div>
                                 <select class="browser-default custom-select" style="width:200px;background-color: rgb(246, 248, 248);" name="balance">
-                                    <option selected>Open this select menu</option>
+                                    <option selected>Select Surplus</option>
                                     
                                     
                                     <% list_balance.forEach(function(bl) { %>
@@ -79,7 +79,7 @@
                                   </select>
                             </div>
                             <div class="form-row m-b-55">
-                                <div class="name">Khoản Chi?</div>
+                                <div class="name">Expenses?</div>
                                 <div class="checkbox">
                                     <label><input name="check" type="checkbox" value="true"></label>
                                 </div>

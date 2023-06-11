@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center" style="margin-top: 10px;">
             <div class="col-md-6 text-center mb-5">
-                <h2 class="heading-section"><b>Quản Lý Người Dùng</b></h2>
+                <h2 class="heading-section"><b>LIST OF USERS </b></h2>
             </div>
 
         </div>
@@ -36,7 +36,7 @@
         <div class="row">
             <div class="col-md-12 ">
                 <div class="d-flex flex-row-reverse" style="margin-bottom: 5px;"><button type="button"
-                        class="btn btn-success " onclick="location.href='http://192.168.1.6:8000/users/add'">Add
+                        class="btn btn-success " onclick="location.href='http://192.168.0.103:8000/users/add'">Add
                         User</button></div>
                 <div class="card shadow-sm p-3 mb-5 bg-white rounded" style="padding: 30px;">
                     <div class="table-wrap ">
@@ -137,8 +137,8 @@
       <script>
         function openPageRole() {
           const currentUrl = window.location.href;
-          const targetUrl = 'http://192.168.1.6:8000/users';
-          const newUrl = 'http://192.168.1.6:8000/users/sortrole';
+          const targetUrl = 'http://192.168.0.103:8000/users';
+          const newUrl = 'http://192.168.0.103:8000/users/sortrole';
       
           if (currentUrl === targetUrl) {
             window.location.href = newUrl;
@@ -150,8 +150,8 @@
       <script>
         function openPageEmail() {
           const currentUrl = window.location.href;
-          const targetUrl = 'http://192.168.1.6:8000/users';
-          const newUrl = 'http://192.168.1.6:8000/users/sortemail';
+          const targetUrl = 'http://192.168.0.103:8000/users';
+          const newUrl = 'http://192.168.0.103:8000/users/sortemail';
       
           if (currentUrl === targetUrl) {
             window.location.href = newUrl;
@@ -163,8 +163,8 @@
       <script>
         function openPageUsername() {
           const currentUrl = window.location.href;
-          const targetUrl = 'http://192.168.1.6:8000/users';
-          const newUrl = 'http://192.168.1.6:8000/users/sortusername';
+          const targetUrl = 'http://192.168.0.103:8000/users';
+          const newUrl = 'http://192.168.0.103:8000/users/sortusername';
       
           if (currentUrl === targetUrl) {
             window.location.href = newUrl;
