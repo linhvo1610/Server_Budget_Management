@@ -22,6 +22,7 @@ router.post('/balance',apiBalance.addBalance);
 router.get('/balance/:idbalance',apiBalance.updateBalance);
 router.put('/balance/:idbalance',apiBalance.updateBalance);
 
+
 router.get('/expense_cat',apiC.listcat);
 // router.get('/receive_cat',apiC.listcatreceive);
 router.get('/record',apiB.listrecord);
