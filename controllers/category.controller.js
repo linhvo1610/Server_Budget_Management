@@ -1,25 +1,18 @@
 const myModel = require('../models/model');
 const fs = require('fs');
-exports.addexpenseCat = async (req, res, next) => {
+exports.addcategory = async (req, res, next) => {
     let msg = ''; // ghi câu thông báo
    
-
-    if (req.method == 'POST') {
-        // xử lý ghi CSDL ở đây
-        // kiểm tra hợp lệ dữ liệu ở chỗ này.
-
-
-        // tạo đối tượng model 
+    let list_user=await myModel.usersModel.find();
+    if (req.method == 'POST'){
        
-        let objCat = new myModel.expenseModel();
-        objCat.name = req.body.name;
-        objCat.image = req.file.filename;
+        let objCat = new myModel.categoryModel();
+        objCat.name=req.body.name;
+        objCat.id_user=req.body.user;
     
         try {
             let new_cat = await objCat.save();
-
             console.log(new_cat);
-
             console.log("Đã ghi thành công");
             msg = 'Đã thêm thành công';
         } catch (err) {
@@ -29,33 +22,28 @@ exports.addexpenseCat = async (req, res, next) => {
         }
 
     }
-    res.render('category/add_expense_category', { TieuDe: "Add User" },)
+    res.render('category/add_expense_category', { list_user:list_user },)
+    console.log(list_user);
 }
-exports.listexpenseCat = async (req, res, next) => {
-    //Hiển thị danh sach san pham
+exports.listcategory = async (req, res, next) => {
 
-    //kiểm tra tồn tại tham s
-
-
-    //var list=await myModel.spModel.find(dieu_kien).sort({name:1});
-    //cair tieens lay them the loai
-    var list = await myModel.expenseModel.find();
+    var list = await myModel.categoryModel.find();
     console.log(list);
 
     res.render('category/expense_category', { list: list })
 }
 
-exports.deleteexpenseCat = async (req, res, next) => {
+exports.deletecategory = async (req, res, next) => {
     let msg = ''; // chứa câu thông báo
     // load dữ liệu cũ để hiển thị
-    let objCat = await myModel.expenseModel.findById(req.params.idcat);
+    let objCat = await myModel.categoryModel.findById(req.params.idcat);
     console.log(objCat);
 
     try {
 
         // update dữ liệu
         // await myModel.spModel.updateOne( {_id:  req.params.idsp},   objSP );
-        await myModel.expenseModel.findByIdAndDelete({ _id: req.params.idcat });
+        await myModel.categoryModel.findByIdAndDelete({ _id: req.params.idcat });
         res.redirect('/category/expensecat');
 
         console.log("Đã xóa thành công");
@@ -71,22 +59,23 @@ exports.deleteexpenseCat = async (req, res, next) => {
         { msg: msg })
 
 }
-exports.editexpenseCat = async (req, res, next) => {
+exports.editcategory = async (req, res, next) => {
     let msg = ''; // chứa câu thông báo
     // load dữ liệu cũ để hiển thị
-    let objCat = await myModel.expenseModel.findById(req.params.idcat);
+    let list_user=await myModel.usersModel.find();
+    let objCat = await myModel.categoryModel.findById(req.params.idcat);
     console.log(objCat);
     if (req.method == 'POST') {
 
-        let objCat = new myModel.expenseModel();
+        let objCat = new myModel.categoryModel();
         objCat.name = req.body.name;
-        objCat.image = req.file.filename;
+        objCat.id_user = req.body.user;
         objCat._id = req.params.idcat;
         try {
 
             // update dữ liệu
             // await myModel.spModel.updateOne( {_id:  req.params.idsp},   objSP );
-            await myModel.expenseModel.findByIdAndUpdate({ _id: req.params.idcat }, objCat);
+            await myModel.categoryModel.findByIdAndUpdate({ _id: req.params.idcat }, objCat);
             res.redirect('/category/expensecat');
             console.log("Đã ghi thành công");
             msg = 'Đã ghi thành công';
@@ -100,137 +89,137 @@ exports.editexpenseCat = async (req, res, next) => {
     }
 
     res.render('category/editexpensecategory',
-        { msg: msg, objCat: objCat })
+        { msg: msg, objCat: objCat,list_user:list_user })
 
 }
-exports.sortexpenseCatname = async (req, res, next) => {
-    //Hiển thị danh sach san pham
+// exports.sortexpenseCatname = async (req, res, next) => {
+//     //Hiển thị danh sach san pham
 
-    //kiểm tra tồn tại tham số
-    let dieu_kien = null;
-    if (typeof (req.query.name) != 'undefined') {
-        let name = req.query.name;
-        dieu_kien = { name: name };
-    }
-
-
-    //var list=await myModel.spModel.find(dieu_kien).sort({name:1});
-    //cair tieens lay them the loai
-    var list = await myModel.expenseModel.find().sort({ name: -1 });
-    console.log(list);
-
-    res.render('category/expense_category', { list: list })
-}
-exports.addreceiveCat = async (req, res, next) => {
-    let msg = ''; // ghi câu thông báo
-
-    if (req.method == 'POST') {
-        // xử lý ghi CSDL ở đây
-        // kiểm tra hợp lệ dữ liệu ở chỗ này.
+//     //kiểm tra tồn tại tham số
+//     let dieu_kien = null;
+//     if (typeof (req.query.name) != 'undefined') {
+//         let name = req.query.name;
+//         dieu_kien = { name: name };
+//     }
 
 
-        // tạo đối tượng model 
-        let objCat = new myModel.receiveModel();
-        objCat.name = req.body.name;
-        objCat.image = req.file.filename;
+//     //var list=await myModel.spModel.find(dieu_kien).sort({name:1});
+//     //cair tieens lay them the loai
+//     var list = await myModel.expenseModel.find().sort({ name: -1 });
+//     console.log(list);
 
-        try {
-            let new_cat = await objCat.save();
+//     res.render('category/expense_category', { list: list })
+// }
+// exports.addreceiveCat = async (req, res, next) => {
+//     let msg = ''; // ghi câu thông báo
 
-            console.log(new_cat);
-
-            console.log("Đã ghi thành công");
-            msg = 'Đã thêm thành công';
-        } catch (err) {
-            console.log(err);
-            msg = 'Lỗi ' + error.message;
-
-        }
-
-    }
-    res.render('category/add_receive_category', { TieuDe: "Add User" },)
-}
-exports.listreceiveCat = async (req, res, next) => {
-
-    var list = await myModel.receiveModel.find();
-    console.log(list);
-
-    res.render('category/receive_category', { list: list })
-}
-
-exports.deletereceiveCat = async (req, res, next) => {
-    let msg = ''; // chứa câu thông báo
-    // load dữ liệu cũ để hiển thị
-    let objCat = await myModel.receiveModel.findById(req.params.idcat);
-    console.log(objCat);
-
-    try {
-
-        // update dữ liệu
-        // await myModel.spModel.updateOne( {_id:  req.params.idsp},   objSP );
-        await myModel.receiveModel.findByIdAndDelete({ _id: req.params.idcat });
-        res.redirect('/category/receivecat');
-
-        console.log("Đã xóa thành công");
-        msg = 'Đã ghi thành công';
-    } catch (err) {
-        console.log(err);
-        msg = 'Lỗi ' + err.message;
-
-    }
+//     if (req.method == 'POST') {
+//         // xử lý ghi CSDL ở đây
+//         // kiểm tra hợp lệ dữ liệu ở chỗ này.
 
 
-    res.render('category/receive_category',
-        { msg: msg })
+//         // tạo đối tượng model 
+//         let objCat = new myModel.receiveModel();
+//         objCat.name = req.body.name;
+//         objCat.image = req.file.filename;
 
-}
-exports.editreceiveCat = async (req, res, next) => {
-    let msg = ''; // chứa câu thông báo
-    // load dữ liệu cũ để hiển thị
-    let objCat = await myModel.receiveModel.findById(req.params.idcat);
-    console.log(objCat);
-    if (req.method == 'POST') {
+//         try {
+//             let new_cat = await objCat.save();
 
-        let objCat = new myModel.receiveModel();
-        objCat.name = req.body.name;
-        objCat.image = req.file.filename;
-        objCat._id = req.params.idcat;
-        try {
+//             console.log(new_cat);
 
-            // update dữ liệu
-            // await myModel.spModel.updateOne( {_id:  req.params.idsp},   objSP );
-            await myModel.receiveModel.findByIdAndUpdate({ _id: req.params.idcat }, objCat);
-            res.redirect('/category/receivecat');
-            console.log("Đã ghi thành công");
-            msg = 'Đã ghi thành công';
+//             console.log("Đã ghi thành công");
+//             msg = 'Đã thêm thành công';
+//         } catch (err) {
+//             console.log(err);
+//             msg = 'Lỗi ' + error.message;
 
-        } catch (err) {
-            console.log(err);
-            msg = 'Lỗi ' + err.message;
+//         }
 
-        }
+//     }
+//     res.render('category/add_receive_category', { TieuDe: "Add User" },)
+// }
+// exports.listreceiveCat = async (req, res, next) => {
 
-    }
+//     var list = await myModel.receiveModel.find();
+//     console.log(list);
 
-    res.render('category/editreceivecategory',
-        { msg: msg, objCat: objCat })
+//     res.render('category/receive_category', { list: list })
+// }
 
-}
-exports.sortreceivecatname = async (req, res, next) => {
-    //Hiển thị danh sach san pham
+// exports.deletereceiveCat = async (req, res, next) => {
+//     let msg = ''; // chứa câu thông báo
+//     // load dữ liệu cũ để hiển thị
+//     let objCat = await myModel.receiveModel.findById(req.params.idcat);
+//     console.log(objCat);
 
-    //kiểm tra tồn tại tham số
-    let dieu_kien = null;
-    if (typeof (req.query.name) != 'undefined') {
-        let name = req.query.name;
-        dieu_kien = { name: name };
-    }
+//     try {
+
+//         // update dữ liệu
+//         // await myModel.spModel.updateOne( {_id:  req.params.idsp},   objSP );
+//         await myModel.receiveModel.findByIdAndDelete({ _id: req.params.idcat });
+//         res.redirect('/category/receivecat');
+
+//         console.log("Đã xóa thành công");
+//         msg = 'Đã ghi thành công';
+//     } catch (err) {
+//         console.log(err);
+//         msg = 'Lỗi ' + err.message;
+
+//     }
 
 
-    //var list=await myModel.spModel.find(dieu_kien).sort({name:1});
-    //cair tieens lay them the loai
-    var list = await myModel.receiveModel.find().sort({ name: -1 });
-    console.log(list);
+//     res.render('category/receive_category',
+//         { msg: msg })
 
-    res.render('category/receive_category', { list: list })
-}
+// }
+// exports.editreceiveCat = async (req, res, next) => {
+//     let msg = ''; // chứa câu thông báo
+//     // load dữ liệu cũ để hiển thị
+//     let objCat = await myModel.receiveModel.findById(req.params.idcat);
+//     console.log(objCat);
+//     if (req.method == 'POST') {
+
+//         let objCat = new myModel.receiveModel();
+//         objCat.name = req.body.name;
+//         objCat.image = req.file.filename;
+//         objCat._id = req.params.idcat;
+//         try {
+
+//             // update dữ liệu
+//             // await myModel.spModel.updateOne( {_id:  req.params.idsp},   objSP );
+//             await myModel.receiveModel.findByIdAndUpdate({ _id: req.params.idcat }, objCat);
+//             res.redirect('/category/receivecat');
+//             console.log("Đã ghi thành công");
+//             msg = 'Đã ghi thành công';
+
+//         } catch (err) {
+//             console.log(err);
+//             msg = 'Lỗi ' + err.message;
+
+//         }
+
+//     }
+
+//     res.render('category/editreceivecategory',
+//         { msg: msg, objCat: objCat })
+
+// }
+// exports.sortreceivecatname = async (req, res, next) => {
+//     //Hiển thị danh sach san pham
+
+//     //kiểm tra tồn tại tham số
+//     let dieu_kien = null;
+//     if (typeof (req.query.name) != 'undefined') {
+//         let name = req.query.name;
+//         dieu_kien = { name: name };
+//     }
+
+
+//     //var list=await myModel.spModel.find(dieu_kien).sort({name:1});
+//     //cair tieens lay them the loai
+//     var list = await myModel.receiveModel.find().sort({ name: -1 });
+//     console.log(list);
+
+//     res.render('category/receive_category', { list: list })
+// }

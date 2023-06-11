@@ -20,19 +20,19 @@ const upload = multer({
 }).single('image');
 
 
-router.get('/addexpensecat',check_login.request_login,catcontroller.addexpenseCat)
-router.post('/addexpensecat',check_login.request_login,upload,catcontroller.addexpenseCat);
-router.get('/expensecat',check_login.request_login,catcontroller.listexpenseCat);
-router.get('/expensecat/delete/:idcat',check_login.request_login,catcontroller.deleteexpenseCat);
-router.get('/expensecat/update/:idcat',check_login.request_login,catcontroller.editexpenseCat);
-router.post('/expensecat/update/:idcat',check_login.request_login,upload,catcontroller.editexpenseCat);
+router.get('/addexpensecat',check_login.request_login,catcontroller.addcategory)
+router.post('/addexpensecat',check_login.request_login,catcontroller.addcategory);
+router.get('/expensecat',check_login.request_login,catcontroller.listcategory);
+router.get('/expensecat/delete/:idcat',check_login.request_login,catcontroller.deletecategory);
+router.get('/expensecat/update/:idcat',check_login.request_login,catcontroller.editcategory);
+router.post('/expensecat/update/:idcat',check_login.request_login,catcontroller.editcategory);
 // router.get('/details/:idproduct',check_login.request_login,catcontroller.detailproduct);
-router.get('/expensecat/sortexpensecatname',check_login.request_login,catcontroller.sortexpenseCatname);
-router.get('/addreceivecat',check_login.request_login,catcontroller.addreceiveCat)
-router.post('/addreceivecat',check_login.request_login,upload,catcontroller.addreceiveCat);
-router.get('/receivecat',check_login.request_login,catcontroller.listreceiveCat);
-router.get('/receivecat/delete/:idcat',check_login.request_login,catcontroller.deletereceiveCat);
-router.get('/receivecat/update/:idcat',check_login.request_login,catcontroller.editreceiveCat);
-router.post('/receivecat/update/:idcat',check_login.request_login,upload,catcontroller.editreceiveCat);
-router.get('/receivecat/sortreceivecatname',check_login.request_login,catcontroller.sortreceivecatname);
+// router.get('/expensecat/sortexpensecatname',check_login.request_login,catcontroller.sortexpenseCatname);
+// router.get('/addreceivecat',check_login.request_login,catcontroller.addreceiveCat)
+// router.post('/addreceivecat',check_login.request_login,upload,catcontroller.addreceiveCat);
+// router.get('/receivecat',check_login.request_login,catcontroller.listreceiveCat);
+// router.get('/receivecat/delete/:idcat',check_login.request_login,catcontroller.deletereceiveCat);
+// router.get('/receivecat/update/:idcat',check_login.request_login,catcontroller.editreceiveCat);
+// router.post('/receivecat/update/:idcat',check_login.request_login,upload,catcontroller.editreceiveCat);
+// router.get('/receivecat/sortreceivecatname',check_login.request_login,catcontroller.sortreceivecatname);
 module.exports = router;
