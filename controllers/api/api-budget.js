@@ -25,6 +25,8 @@ exports.listrecord = async (req, res, next) => {
 
     //trả về client
     res.json(dataR)
+    console.log(dataR);
+
 }
 // exports.listreceivebudget = async (req, res, next) => {
 //     let dataR = {
