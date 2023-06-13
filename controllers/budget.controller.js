@@ -4,19 +4,41 @@ const fs = require('fs');
 
 exports.getrecord = async (req, res, next) => {
     let dieu_kien = null;
+
     let list_cat = await myModel.categoryModel.find();
     let objCat = await myModel.categoryModel.findById(req.params.idcat);
     console.log(objCat);
+
+    let list_user = await myModel.usersModel.find();
+    let objuser = await myModel.usersModel.findById(req.params.iduser);
+    console.log(objuser);
+    let list_balance = await myModel.balanceModel.find();
+
+    let objblance = await myModel.balanceModel.findById(req.params.idbalance);
+    console.log(objblance);
+  
+   
     if (typeof (req.query.id_cat) != 'undefined') {
         let id_cat = req.query.id_cat;
         dieu_kien = { id_cat: id_cat };
 
     }
+    if (typeof (req.query.id_user) != 'undefined') {
+        let id_user = req.query.id_user;
+        dieu_kien = { id_user: id_user };
+
+    }
+    
+    if (typeof (req.query.id_balance) != 'undefined') {
+        let id_balance = req.query.id_balance;
+        dieu_kien = { id_cat: id_balance };
+
+    }
 
 
-    var list = await myModel.recordModel.find(dieu_kien).populate('id_cat');
+    var list = await myModel.recordModel.find(dieu_kien).populate('id_cat').populate('id_user').populate('id_balance');
     console.log(list);
-    res.render('budget/expense', { list: list, list_cat: list_cat },)
+    res.render('budget/expense', { list: list, list_cat: list_cat, list_user: list_user, list_balance: list_balance },)
 
 }
 // exports.chitiet = async (req,res,next) =>{
@@ -85,19 +107,42 @@ exports.detail = async(req,res,next) =>{
     
     // let dieu_kien = null;\
     let dieu_kien = null;
-    let list_cat = await myModel.categoryModel.find();
+    let listsp = await myModel.categoryModel.findOne({_id : objsp.id_cat})
+
+    let list_cat= await myModel.categoryModel.findOne();
+   
     let objCat = await myModel.categoryModel.findById(req.params.idcat);
     console.log(objCat);
+    let list_user = await myModel.usersModel.find();
+    let objuser = await myModel.usersModel.findById(req.params.iduser);
+    console.log(objuser);
+    let list_balance = await myModel.balanceModel.find();
+
+    let objblance = await myModel.balanceModel.findById(req.params.idbalance);
+    console.log(objblance);
+  
+   
     if (typeof (req.query.id_cat) != 'undefined') {
         let id_cat = req.query.id_cat;
         dieu_kien = { id_cat: id_cat };
 
     }
+    if (typeof (req.query.id_user) != 'undefined') {
+        let id_user = req.query.id_user;
+        dieu_kien = { id_user: id_user };
 
+    }
+    
+    if (typeof (req.query.id_balance) != 'undefined') {
+        let id_balance = req.query.id_balance;
+        dieu_kien = { id_balance: id_balance };
 
-    var list = await myModel.recordModel.find(dieu_kien).populate('id_cat');
+    }
+
+let objsp= await myModel.recordModel.findById(req.params.idB);
+    var list = await myModel.recordModel.find(dieu_kien).populate('id_cat').populate('id_user').populate('id_balance');
     console.log(list);
-    res.render('budget/detail', { list: list, list_cat: list_cat, })
+    res.render('budget/expense', { list: list, list_cat: list_cat, list_user: list_user, list_balance: list_balance, listsp: listsp,  },)
 }
 exports.addrecord = async (req, res, next) => {
     var url_img = '';
