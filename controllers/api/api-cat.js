@@ -11,7 +11,7 @@ exports.listcat = async (req, res, next) => {
     //code xử lý lấy danh sách
     let list = []
     try {
-        list = await MyModel.balanceModel.find();
+        list = await MyModel.categoryModel.find();
         dataR.data = list;
     }
     catch (err) {
