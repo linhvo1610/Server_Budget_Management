@@ -1,11 +1,12 @@
 <%- include('../inc/top') %>
     <div class="container" style="min-height: 575px;">
-        <div class="row justify-content-center" style="margin-top: 10px;">
+        <div class="row justify-content-center" style="margin-top: 10px;" >
             <div class="col-md-6 text-center mb-5">
                 <h2 class="heading-section"><b>LIST OF BUDGETS</b></h2>
             </div>
         </div>
-        <div class="row">
+      
+        <div class="row" style="min-height: 600px;">
             <div class="col-md-12">
                 <div class="d-flex flex-row-reverse" style="margin-bottom: 5px;"><button type="button" class="btn btn-success " onclick="location.href='http://192.168.0.103:8000/budget/add'">Add Budget</button></div>
                 <div class="table-wrap">
@@ -16,6 +17,8 @@
                                 <th>ID</th>
                                 <th>User</th>
                                 <th>Title</th>
+                                
+                                <th>Category</th>
                                 <th>Price</th>
                                 <th>Options</th>
                             </tr>
@@ -34,6 +37,9 @@
                                     <td>
                                         <%=data.title %>
                                         
+                                    </td>
+                                    <td>
+                                        <%=data.id_cat.name %>
                                     </td>
                                     <td>
                                         <%=data.price %>

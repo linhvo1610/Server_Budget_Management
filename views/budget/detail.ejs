@@ -1,62 +1,66 @@
 <%- include('../inc/top') %>
 <div>
+ 
 
-    <div class="container justify-content-center align-content-center text-center mt-5 ">
-        <div class="text-black fs-2"> Detail</div>
-       
-    <div class="container justify-content-center align-content-center  " style="min-height: 750px;">
-      
+    <div class="container justify-content-center align-content-center text-center mt-5  ">
+      <h2 class="heading-section"><b>DETAIL</b></h2>
+
+     
     
-      <div class=" container-fluid align-content-center justify-content-center mt-3 text-center">
-        <% list.forEach(data=>{%>
-         
-            <div class="text-dark" >Title:  <%=data.title %> </div>
-                 
-             
-              
-             
-                  <div class="text-50" > User:  <%=data.id_user %></div>
-                 
-                
-          
      
-                 
-                  
-           
      
-                     <div class="text-danger"> Price: <%=data.price %>
-                     </div>
-                     
-                    
-                    
-             
-         
+  <div class="container justify-content-center align-content-center  " style="min-height: 750px;">
+
+    
+  
+  
+    <div class=" container-fluid align-content-center justify-content-center mt-3 text-center border border-black ">
+      <% list.forEach(data=>{%>
+       
+          <div class="text-dark" >TITLE:  <%=data.title %> </div>
                
+           
+            
+           
+                <div class="text-50" > USER:  <%=data.id_user %></div>
+                <div class="text-50" > DATE:  <%=data.date %></div>
+                <div class="text-50" > CATEGORY:  <%=data.id_cat.name %></div>
+                <div class="text-50" > BALANCE:  <%=data.id_balance %></div>
+                   <div class="text-danger"> PRICE: <%=data.price %>
+                   </div>
+                   
+                 
+           
+       
              
-              
-              
-         
-          
-          <%} ) %>
+           
+            
+            
+       
+        
+        <%} ) %>
 
-       
-       
-      
+     
      
     
-        
-       
-    
-    
-      </div>
-    
-       
-    
+   
+  
+      
+     
+  
+  
     </div>
+  
+     
+
+  </div>
 
 
 </div>
 
+ 
+
+   
 
 
 <%- include('../inc/bottom') %>
