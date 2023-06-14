@@ -27,6 +27,9 @@ router.get('/expense_cat',apiC.listcat);
 // router.get('/receive_cat',apiC.listcatreceive);
 router.get('/record',apiB.listrecord);
 router.post('/record',apiB.addrecord);
+router.put('/record/:idrecord',apiB.updaterecord);
+router.get('/record/:idrecord',apiB.deleterecord);
+router.delete('/record/:idrecord',apiB.deleterecord);
 router.get('/category',apiC.listcat)
 // router.get('/budgetreceive',apiB.listreceivebudget);
 
