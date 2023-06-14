@@ -38,28 +38,23 @@
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><a href="http://192.168.102.12:8000/" class="nav-link">Home</a></li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false">Category</a>
-						<div class="dropdown-menu" aria-labelledby="dropdown04">
-							<a class="dropdown-item" href="http://192.168.102.12:8000/category/expensecat">Expense Category</a>
-							<a class="dropdown-item" href="http://192.168.102.12:8000/category/receivecat">Receive Category</a>
-
-						</div>
-					</li>
-					<li class="nav-item"><a href="http://192.168.102.12:8000/users" class="nav-link">Users</a></li>
+					<li class="nav-item active"><a href="http://192.168.0.103:8000/" class="nav-link">Home</a></li>
+					
+					<li class="nav-item"><a href="http://192.168.0.103:8000/category/expensecat" class="nav-link">Expense Category</a></li>
+					<li class="nav-item"><a href="http://192.168.0.103:8000/users" class="nav-link">Users</a></li>
+					<li class="nav-item"><a href="http://192.168.0.103:8000/budget/list" class="nav-link">Budget</a></li>
 
 				</ul>
 				<ul class="navbar-nav" style="margin-right: 80px;">
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
 							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg"
+							<img src="https://img.freepik.com/free-vector/illustration-businessman_53876-5856.jpg?size=626&ext=jpg&ga=GA1.1.1143711753.1667194272&semt=ais"
 								width="30" height="30" class="rounded-circle">
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 							<a class="dropdown-item" href="#">Edit Profile</a>
+							
 							<form method="get" action="/logout"><button class="dropdown-item" type="submit"
 									onclick="return confirm_logout(this);">Log Out</button></form>
 
