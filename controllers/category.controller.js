@@ -2,13 +2,15 @@ const myModel = require('../models/model');
 const fs = require('fs');
 exports.addcategory = async (req, res, next) => {
     let msg = ''; // ghi câu thông báo
-   
-    let list_user=await myModel.usersModel.find();
+    var url_img='';
+
     if (req.method == 'POST'){
-       
+        await fs.promises.rename(req.file.path, './public/uploads/' + req.file.originalname)
+        url_img = '/uploads/' + req.file.originalname;
+        console.log("upload thành công" + url_img);
         let objCat = new myModel.categoryModel();
         objCat.name=req.body.name;
-        objCat.id_user=req.body.user;
+        objCat.image=url_img;
     
         try {
             let new_cat = await objCat.save();
@@ -22,12 +24,11 @@ exports.addcategory = async (req, res, next) => {
         }
 
     }
-    res.render('category/add_expense_category', { list_user:list_user },)
-    console.log(list_user);
+    res.render('category/add_expense_category')
 }
 exports.listcategory = async (req, res, next) => {
 
-    var list = await myModel.categoryModel.find().populate("id_user");
+    var list = await myModel.categoryModel.find();
     
     console.log(list);
 

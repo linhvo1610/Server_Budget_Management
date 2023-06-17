@@ -21,11 +21,11 @@ const upload = multer({
 
 
 router.get('/addexpensecat',check_login.request_login,catcontroller.addcategory)
-router.post('/addexpensecat',check_login.request_login,catcontroller.addcategory);
+router.post('/addexpensecat',check_login.request_login,upload,catcontroller.addcategory);
 router.get('/expensecat',check_login.request_login,catcontroller.listcategory);
 router.get('/expensecat/delete/:idcat',check_login.request_login,catcontroller.deletecategory);
 router.get('/expensecat/update/:idcat',check_login.request_login,catcontroller.editcategory);
-router.post('/expensecat/update/:idcat',check_login.request_login,catcontroller.editcategory);
+router.post('/expensecat/update/:idcat',check_login.request_login,upload,catcontroller.editcategory);
 // router.get('/details/:idproduct',check_login.request_login,catcontroller.detailproduct);
 // router.get('/expensecat/sortexpensecatname',check_login.request_login,catcontroller.sortexpenseCatname);
 // router.get('/addreceivecat',check_login.request_login,catcontroller.addreceiveCat)

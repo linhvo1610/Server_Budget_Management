@@ -7,7 +7,7 @@
                         <h2 class="title"> Add Category</h2>
                     </div>
                     <div class="card-body">
-                        <form action="" method="POST">
+                        <form action="" method="POST" enctype="multipart/form-data">
 
                             <div class="form-row">
                                 <div class="name">Title</div>
@@ -19,21 +19,16 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="form-row m-b-55">
-                                <div class="name">User</div>
-                                <select class="browser-default custom-select"
-                                    style="width:200px;background-color: rgb(246, 248, 248);" name="user">
-                                    <option selected>select user</option>
-
-
-                                    <% list_user.forEach(function(user) { %>
-                                        <option value="<%= user._id%>">
-                                            <%= user.username %>
-                                        </option>
-
-                                        <% }); %>
-
-                                </select>
+                                <div class="name">Hình ảnh</div>
+                                <div class="value">
+                                    <div class="row row-refine">
+                                    <div class="input-group">
+                                        <input class=""  style="margin-left: 20px;" type="file" name="image">
+                                    </div>
+                                </div>
+                                </div>
                             </div>
 
 
