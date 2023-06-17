@@ -48,7 +48,7 @@ exports.addrecord =async (req, res, next) => {
         objProduct.id_user = req.body.id_user;
         objProduct.id_balance = req.body.id_balance;
         objProduct.is_expense=req.body.is_expense;
-        objProduct.date = new Date();
+        objProduct.date = req.body.date;
       
         try{
             let dataR = await objProduct.save();

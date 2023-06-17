@@ -13,7 +13,7 @@ const userSchema = new db.mongoose.Schema(
 
 const categorySchema = new db.mongoose.Schema(
     {   name: { type: String, required: true },
-        id_user:{type: db.mongoose.Schema.Types.ObjectId,ref:'usersModel'},      
+        image:{type: String}   
     },
     {collection:'category'}
 );
