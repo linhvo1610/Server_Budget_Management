@@ -8,7 +8,7 @@
       
         <div class="row" style="min-height: 600px;">
             <div class="col-md-12">
-                <div class="d-flex flex-row-reverse" style="margin-bottom: 5px;"><button type="button" class="btn btn-success " onclick="location.href='http://192.168.102.12:8000/budget/add'">Add Budget</button></div>
+                <div class="d-flex flex-row-reverse" style="margin-bottom: 5px;"><button type="button" class="btn btn-success " onclick="location.href='http://192.168.0.101:8000/budget/add'">Add Budget</button></div>
                 <div class="table-wrap">
                     <table class="table table-responsive-xl">
                         <thead class="thead-dark">
@@ -18,7 +18,7 @@
                                 <th>User</th>
                                 <th>Title</th>
                                 
-                                <th>Category</th>
+                               
                                 <th>Price</th>
                                 <th>Options</th>
                             </tr>
@@ -38,9 +38,7 @@
                                         <%=data.title %>
                                         
                                     </td>
-                                    <td>
-                                        <%=data.id_cat.name %>
-                                    </td>
+                                   
                                     <td>
                                         <%=data.price %>
                                     </td>
