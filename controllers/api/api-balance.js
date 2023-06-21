@@ -62,37 +62,28 @@ exports.addBalance =async (req, res, next) => {
     res.json(dataR)
 
 }
-exports.updateBalance =async (req, res, next) => {
+exports.updateBalance = async (req, res, next) => {
     let dataR = {
         status: 1,
         msg: "ok"
     }
-    if(req.method =='PUT'){
-        // xử lý ghi CSDL ở đây
-        // kiểm tra hợp lệ dữ liệu ở chỗ này.
-        // tạo đối tượng model 
-        let objBalance = new MyModel.balanceModel();
-        objBalance.id_user = req.body.id_user;
-        objBalance.balance = req.body.balance;
-        objBalance._id = req.params.idbalance;
-        try{
-            await MyModel.balanceModel.findByIdAndUpdate({_id:req.params.idbalance},objBalance);
-            let dataR = await objBalance.save();
+    if (req.method == 'PUT') {
+       
+        try {
+            await MyModel.balanceModel.updateOne({ _id: req.params.idbalance }, {
+                $set: {
+                    balance: req.body.balance,
+                    id_user: req.body.id_user
+                }
+            });;
             console.log(dataR);
 
             console.log("Đã ghi thành công");
-           
-        }catch(err){
+
+        } catch (err) {
             console.log(err);
             dataR.msg = err.message;
         }
- 
+
     }
-
-    //code xử lý add
-
-
-    //trả về client
-    res.json(dataR)
-
 }
